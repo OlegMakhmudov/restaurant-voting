@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: voting
+  datasource:
+    url: jdbc:h2:mem:voting;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password:
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+        default_batch_fetch_size: 20
+  h2:
+    console:
+      enabled: true
+
+server:
+  port: 8080
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+logging:
+  level:
+    ru.javaops: DEBUG
+    org.springframework.web: INFO
+
+springdoc:
+  swagger-ui:
+    path: /
+    try-it-out-enabled: true
