@@ -16,7 +16,6 @@ import java.time.LocalTime;
 @Setter
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@AllArgsConstructor
 @ToString(callSuper = true)
 public class Vote extends AbstractBaseEntity {
 
@@ -40,5 +39,11 @@ public class Vote extends AbstractBaseEntity {
     @NotNull
     private LocalTime time;
 
-
+    public Vote(Integer id, User user, Restaurant restaurant, LocalDate date, LocalTime time) {
+        super(id);
+        this.user = user;
+        this.restaurant = restaurant;
+        this.date = date;
+        this.time = time;
+    }
 }
