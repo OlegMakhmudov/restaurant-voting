@@ -18,7 +18,7 @@ import java.time.LocalDate;
 })
 @Getter
 @Setter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 @AllArgsConstructor
 @ToString(callSuper = true)
 public class Menu extends AbstractBaseEntity{

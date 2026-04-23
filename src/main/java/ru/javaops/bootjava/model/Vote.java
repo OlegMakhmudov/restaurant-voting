@@ -15,7 +15,7 @@ import java.time.LocalTime;
 })
 @Setter
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 @ToString(callSuper = true)
 public class Vote extends AbstractBaseEntity {
 

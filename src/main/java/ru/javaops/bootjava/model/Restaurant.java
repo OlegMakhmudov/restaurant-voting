@@ -12,7 +12,7 @@ import javax.validation.constraints.Size;
 @Table(name = "restaurants")
 @Getter
 @Setter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 @AllArgsConstructor
 @ToString(callSuper = true)
 public class Restaurant extends AbstractBaseEntity {
