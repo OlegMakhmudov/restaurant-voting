@@ -2,7 +2,7 @@ package ru.javaops.bootjava.util;
 
 import lombok.experimental.UtilityClass;
 import ru.javaops.bootjava.model.Menu;
-import ru.javaops.bootjava.to.MenuTo;
+import ru.javaops.bootjava.web.dto.MenuTo;
 
 @UtilityClass
 public class MenuMapper {

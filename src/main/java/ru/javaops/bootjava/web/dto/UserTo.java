@@ -1,4 +1,4 @@
-package ru.javaops.bootjava.to;
+package ru.javaops.bootjava.web.dto;
 
 
 import lombok.AllArgsConstructor;

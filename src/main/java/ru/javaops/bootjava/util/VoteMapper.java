@@ -2,7 +2,7 @@ package ru.javaops.bootjava.util;
 
 import lombok.experimental.UtilityClass;
 import ru.javaops.bootjava.model.Vote;
-import ru.javaops.bootjava.to.VoteTo;
+import ru.javaops.bootjava.web.dto.VoteTo;
 
 @UtilityClass
 public class VoteMapper {
