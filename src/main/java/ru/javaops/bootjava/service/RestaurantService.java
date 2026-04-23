@@ -22,4 +22,23 @@ public class RestaurantService {
     public Restaurant get(int id) {
         return restaurantRepository.findById(id).orElseThrow(() -> new RuntimeException("Restaurant with id " + id + " not found"));
     }
+
+    @Transactional
+    public Restaurant create(Restaurant restaurant) {
+        return restaurantRepository.save(restaurant);
+    }
+
+    @Transactional
+    public void update(int id, Restaurant updatedRestaurant) {
+        Restaurant existing = get(id);
+        existing.setName(updatedRestaurant.getName());
+        existing.setAddress(updatedRestaurant.getAddress());
+        restaurantRepository.save(existing);
+    }
+
+    @Transactional
+    public void delete(int id) {
+        restaurantRepository.deleteById(id);
+    }
+
 }
