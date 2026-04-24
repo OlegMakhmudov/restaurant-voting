@@ -35,26 +35,31 @@ public class VoteService {
     }
 
     public Vote vote(int userId, int restaurantId) {
-        User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
-        Restaurant restaurant = restaurantRepository.findById(restaurantId).orElseThrow(() -> new RuntimeException("Restaurant not found"));
-        LocalDate date = LocalDate.now();
-        LocalTime time = LocalTime.now();
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
 
-        //Проверка есть ли у ресторана меню на сегодня
-        if (menuRepository.findAllByRestaurantIdAndDate(restaurantId, date).isEmpty()) {
+        Restaurant restaurant = restaurantRepository.findById(restaurantId)
+                .orElseThrow(() -> new RuntimeException("Restaurant not found"));
+
+        LocalDate today = LocalDate.now();
+        LocalTime now = LocalTime.now();
+
+        boolean hasTodayMenu = menuRepository.findAllByRestaurantIdAndDate(restaurantId, today).isEmpty();
+        if (hasTodayMenu) {
             throw new IllegalVoteException("Restaurant has no menu for today");
         }
-        return voteRepository.findByUserIdAndDate(userId, date)
+
+        return voteRepository.findByUserIdAndDate(userId, today)
                 .map(existingVote -> {
                     if (existingVote.getTime().isBefore(DEADLINE)) {
                         existingVote.setRestaurant(restaurant);
-                        existingVote.setTime(time);
+                        existingVote.setTime(now);
                         return voteRepository.save(existingVote);
                     } else {
                         throw new IllegalVoteException("Cannot change vote after 11:00");
                     }
                 })
-                .orElseGet(() -> voteRepository.save(new Vote(null, user, restaurant, date, time)));
+                .orElseGet(() -> voteRepository.save(new Vote(null, user, restaurant, today, now)));
     }
 }
 

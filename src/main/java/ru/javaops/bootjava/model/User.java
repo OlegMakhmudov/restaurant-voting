@@ -49,7 +49,7 @@ public class User extends AbstractBaseEntity {
     @ElementCollection(fetch = FetchType.EAGER)
     private Set<Role> roles;
 
-    public User(Integer id, String name, String email, String password, Set<Role> roles) {
+    public User(Integer id, String name, String email, String password, boolean enabled, Set<Role> roles) {
         super(id);
         this.name = name;
         this.email = email;
