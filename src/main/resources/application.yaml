@@ -1,22 +1,41 @@
 spring:
   application:
-    name: voting
+    name: restaurant-voting
+
   datasource:
     url: jdbc:h2:mem:voting;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     username: sa
     password:
+    driver-class-name: org.h2.Driver
+
   jpa:
     show-sql: true
     hibernate:
       ddl-auto: create
+    defer-datasource-initialization: true
     open-in-view: false
     properties:
       hibernate:
         format_sql: true
         default_batch_fetch_size: 20
+        jdbc:
+          batch_size: 20
+
   h2:
     console:
       enabled: true
+      path: /h2-console
+
+  sql:
+    init:
+      mode: always
+
+  jackson:
+    visibility:
+      field: any
+      getter: none
+      setter: none
+      is-getter: none
 
 server:
   port: 8080
@@ -28,10 +47,17 @@ server:
 
 logging:
   level:
-    ru.javaops: DEBUG
+    ru.javaops.bootjava: DEBUG
     org.springframework.web: INFO
+    org.springframework.security: INFO
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
 
 springdoc:
   swagger-ui:
     path: /
     try-it-out-enabled: true
+    operationsSorter: method
+    tagsSorter: alpha
+  api-docs:
+    path: /api-docs

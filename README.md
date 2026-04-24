@@ -1,8 +1,36 @@
-<img src="http://javaops.ru/static/img/logo/javaops_30.png" width="223"/>
+# Restaurant Voting System
 
-Открытый курс для всех желающих приобщиться к живой современной разработке на Java
-# [Разработка Spring Boot 3.x HATEOAS приложения (BootJava)](http://javaops.ru/view/bootjava?ref=gh)
-## [Программа](http://javaops.ru/view/bootjava#program)
+Система голосования для выбора ресторана для обеда.
 
-### Java приложения на самом современном и востребованном стеке: Spring Boot 3.x, Spring Data Rest/HATEOAS, Lombok, JPA, H2, ....
-Мы создадим с нуля основу любого современного REST веб-приложения: аутентификация и авторизация на основе ролей, регистрация пользователя в приложении, управление своим профилем и администрирование пользователей.
+## 📋 О проекте
+
+REST API приложение для голосования за рестораны.  
+Администратор управляет ресторанами и меню, пользователи голосуют за понравившийся ресторан.
+
+### Основные возможности
+
+- ✅ Аутентификация и авторизация (ADMIN / USER)
+- ✅ Админ: управление ресторанами (CRUD)
+- ✅ Админ: управление меню (CRUD)
+- ✅ Пользователь: просмотр ресторанов и сегодняшнего меню
+- ✅ Пользователь: голосование за ресторан
+- ✅ Ограничение: один голос в день от пользователя
+- ✅ Ограничение: изменение голоса только до 11:00
+
+## 🛠️ Стек технологий
+
+- Java 17
+- Spring Boot 2.7.18
+- Spring Data JPA (Hibernate)
+- Spring Security
+- Spring Web MVC
+- H2 Database
+- Lombok
+- Swagger/OpenAPI
+
+## 🚀 Запуск
+
+```bash
+git clone https://github.com/OlegMakhmudov/restaurant-voting.git
+cd restaurant-voting
+mvn spring-boot:run
