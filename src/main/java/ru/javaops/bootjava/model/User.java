@@ -1,6 +1,5 @@
 package ru.javaops.bootjava.model;
 
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
