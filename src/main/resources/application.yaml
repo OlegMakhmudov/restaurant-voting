@@ -37,6 +37,12 @@ spring:
       setter: none
       is-getter: none
 
+  # ===== ДОБАВЛЕНО: КЭШИРОВАНИЕ =====
+  cache:
+    type: caffeine
+    caffeine:
+      spec: maximumSize=100,expireAfterWrite=60s
+
 server:
   port: 8080
   servlet:
@@ -61,3 +67,17 @@ springdoc:
     tagsSorter: alpha
   api-docs:
     path: /api-docs
+
+# ===== ДОБАВЛЕНО: ACTUATOR / MONITORING =====
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    export:
+      prometheus:
+        enabled: true

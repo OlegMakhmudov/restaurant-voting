@@ -1,6 +1,9 @@
 package ru.javaops.bootjava.web.user;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import ru.javaops.bootjava.model.Vote;
@@ -8,7 +11,6 @@ import ru.javaops.bootjava.service.MenuService;
 import ru.javaops.bootjava.service.RestaurantService;
 import ru.javaops.bootjava.service.VoteService;
 import ru.javaops.bootjava.util.MenuMapper;
-import ru.javaops.bootjava.util.RestaurantMapper;
 import ru.javaops.bootjava.util.VoteMapper;
 import ru.javaops.bootjava.web.dto.MenuTo;
 import ru.javaops.bootjava.web.dto.RestaurantTo;
@@ -25,10 +27,8 @@ public class UserVoteController {
     private final VoteService voteService;
 
     @GetMapping("/restaurants")
-    public List<RestaurantTo> getAllRestaurants() {
-        return restaurantService.getAll().stream()
-                .map(RestaurantMapper::toTo)
-                .toList();
+    public Page<RestaurantTo> getAll(@PageableDefault(size = 10, sort = "name") Pageable pageable) {
+        return restaurantService.getAll(pageable);
     }
 
     @GetMapping("/restaurants/today")
