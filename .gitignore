@@ -1,8 +1,40 @@
-HELP.md
-/target/
+# Compiled files
+*.class
+target/
 
-### IntelliJ IDEA ###
-.idea
-*.iws
+# IDE files
+.idea/
 *.iml
 *.ipr
+*.iws
+.settings/
+.project
+.classpath
+.vscode/
+
+# Log files
+*.log
+
+# Database files
+*.db
+*.h2.db
+*.mv.db
+*.trace.db
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Secret files
+application-secret.yaml
+application-secret.properties
+*.key
+*.pem
+*.p12
+*.jks
+
+# Other
+*.tmp
+*.bak
+*.swp
+*~
